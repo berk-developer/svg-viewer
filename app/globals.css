@@ -877,26 +877,200 @@ button {
   }
 }
 
-@media (max-width: 640px) {
-  .pageShell {
-    padding: var(--space-md);
-  }
-  
+@media (max-width: 768px) {
   .importGrid {
     grid-template-columns: 1fr;
   }
   
+  .dropZone {
+    padding: var(--space-xl) var(--space-md);
+    min-height: 120px;
+  }
+  
+  .textArea {
+    min-height: 100px;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --space-xl: 1.5rem;
+    --space-2xl: 2rem;
+  }
+  
+  .pageShell {
+    padding: var(--space-md);
+  }
+  
+  .pageHero {
+    padding: var(--space-sm) 0;
+  }
+  
+  .heroTitle {
+    font-size: 1.125rem;
+  }
+  
+  .heroMeta {
+    font-size: 0.625rem;
+  }
+  
+  .surfaceCard {
+    padding: var(--space-md);
+  }
+  
+  .dropZone {
+    min-height: 100px;
+    padding: var(--space-lg) var(--space-md);
+    gap: var(--space-sm);
+  }
+  
+  .dropZoneIcon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .dropZoneText {
+    font-size: 0.8125rem;
+  }
+  
+  .dropZoneButton {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.75rem;
+  }
+  
+  .dropZoneHint {
+    font-size: 0.625rem;
+  }
+  
+  .textArea {
+    min-height: 80px;
+    font-size: 0.75rem;
+  }
+  
+  .actionButton {
+    padding: var(--space-sm) var(--space-md);
+    min-height: 44px;
+    font-size: 0.875rem;
+  }
+  
+  .stageHeader {
+    padding: var(--space-sm) var(--space-md);
+  }
+  
+  .stageHeader h3 {
+    font-size: 0.8125rem;
+  }
+  
   .stageToolbar {
-    flex-wrap: wrap;
+    padding: var(--space-sm);
+    gap: var(--space-sm);
+  }
+  
+  .toolGroup {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .toolButton {
+    flex: 1;
+    min-height: 40px;
+    font-size: 0.8125rem;
+  }
+  
+  .stageViewport {
+    min-height: 280px;
+  }
+  
+  .stageImage {
+    max-width: 90vw;
+    max-height: 70vh;
   }
   
   .stageFooter {
-    flex-wrap: wrap;
+    padding: var(--space-sm) var(--space-md);
     gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+  
+  .stageFooterItem {
+    flex: 1;
+    min-width: 80px;
+  }
+  
+  .panelHeader {
+    padding: var(--space-sm) var(--space-md);
+  }
+  
+  .panelTab {
+    padding: var(--space-xs) var(--space-sm);
+    min-height: 36px;
+    font-size: 0.8125rem;
+  }
+  
+  .panelContent {
+    padding: var(--space-md);
   }
   
   .metricGrid {
     grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+  
+  .metricCard {
+    padding: var(--space-sm);
+  }
+  
+  .metricValue {
+    font-size: 0.9375rem;
+  }
+  
+  .featureTag {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.75rem;
+  }
+  
+  .paletteRow {
+    gap: var(--space-xs);
+  }
+  
+  .paletteSwatch {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.6875rem;
+  }
+  
+  .countRow {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.8125rem;
+  }
+  
+  .exportBox {
+    padding: var(--space-sm);
+  }
+  
+  .toast {
+    right: var(--space-md);
+    left: var(--space-md);
+    bottom: var(--space-md);
+    max-width: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .heroTitle {
+    font-size: 1rem;
+  }
+  
+  .surfaceHeading h3 {
+    font-size: 0.75rem;
+  }
+  
+  .toolButton {
+    font-size: 0.75rem;
+    padding: var(--space-xs);
+  }
+  
+  .stageViewport {
+    min-height: 240px;
   }
 }
 
@@ -906,5 +1080,18 @@ button {
   *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .toolButton,
+  .actionButton,
+  .panelTab,
+  .dropZone {
+    min-height: 44px;
+  }
+  
+  .dropZone:active {
+    transform: scale(0.98);
   }
 }
