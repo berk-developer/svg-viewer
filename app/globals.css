@@ -1095,3 +1095,1021 @@ button {
     transform: scale(0.98);
   }
 }
+
+/* Navigation */
+.siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: var(--space-xl);
+}
+
+.siteHeaderInner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--space-sm) var(--space-xl);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+}
+
+.siteBrand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: opacity var(--transition-fast);
+}
+
+.siteBrand:hover {
+  opacity: 0.8;
+  text-decoration: none;
+}
+
+.siteBrandIcon {
+  width: 24px;
+  height: 24px;
+  color: var(--accent);
+}
+
+.siteBrandText {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+.mainNav {
+  display: flex;
+  gap: var(--space-xs);
+  background: var(--bg-tertiary);
+  padding: 4px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.navLink svg {
+  width: 16px;
+  height: 16px;
+}
+
+.navLink:hover {
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  text-decoration: none;
+}
+
+.navLink--active {
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 640px) {
+  .siteHeaderInner {
+    padding: var(--space-sm) var(--space-md);
+  }
+  
+  .siteBrandText {
+    display: none;
+  }
+  
+  .mainNav {
+    flex: 1;
+    justify-content: center;
+  }
+  
+  .navLink {
+    flex: 1;
+    justify-content: center;
+    padding: var(--space-sm);
+  }
+  
+  .navLink span {
+    display: none;
+  }
+  
+  .navLink svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* SVG Comparison */
+.compareWorkbench {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.compareControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.compareTabs {
+  display: flex;
+  gap: var(--space-xs);
+  background: var(--bg-tertiary);
+  padding: 4px;
+  border-radius: var(--radius-md);
+}
+
+.compareTab {
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.compareTab:hover {
+  color: var(--text-primary);
+}
+
+.compareTab--active {
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.compareCount {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.inputsSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.inputsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-md);
+}
+
+.addSlotButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  border: 2px dashed var(--border-default);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  align-self: flex-start;
+}
+
+.addSlotButton:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+}
+
+.addSlotButton svg {
+  width: 18px;
+  height: 18px;
+}
+
+.compareInputCard {
+  position: relative;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  transition: all var(--transition-fast);
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.compareInputCard--loaded {
+  border-color: var(--accent);
+}
+
+.compareInputCard--drag {
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+}
+
+.compareInputDropArea {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.compareInputHeader {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.compareInputNumber {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+}
+
+.compareInputActions {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.compareInputAction {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.compareInputAction:hover {
+  color: var(--text-primary);
+  border-color: var(--border-default);
+}
+
+.compareInputAction svg {
+  width: 14px;
+  height: 14px;
+}
+
+.compareInputPreview {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.compareInputPreview img {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  max-height: 160px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm);
+}
+
+.compareInputInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.compareInputFilename {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.compareInputMeta {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.compareInputEmpty {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.compareDropZone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-lg);
+  border: 2px dashed var(--border-default);
+  border-radius: var(--radius-sm);
+  background: var(--bg-tertiary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex: 1;
+  min-height: 100px;
+}
+
+.compareDropZone:hover {
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+}
+
+.compareDropZone svg {
+  width: 24px;
+  height: 24px;
+  color: var(--text-muted);
+}
+
+.compareDropZone span {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.compareInputOr {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.compareInputTextarea {
+  min-height: 60px;
+  resize: none;
+}
+
+.compareInputLoad {
+  width: 100%;
+}
+
+.compareOutput {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.outputHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.outputHeader h3 {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.outputMeta {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+}
+
+.compareGrid {
+  display: grid;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  min-height: 300px;
+}
+
+.compareGrid--1 {
+  grid-template-columns: 1fr;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.compareGrid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.compareGrid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.compareGrid--4 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 1100px) {
+  .compareGrid--4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.compareItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm);
+}
+
+.compareItemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.compareItemName {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.compareItemSize {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.compareItemViewport {
+  flex: 1;
+  min-height: 200px;
+  display: grid;
+  place-items: center;
+  background: var(--bg-primary);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+}
+
+.compareItemViewport img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.compareEmpty {
+  grid-column: 1 / -1;
+  display: grid;
+  place-items: center;
+  padding: var(--space-3xl);
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+}
+
+.overlayView {
+  padding: var(--space-lg);
+}
+
+.overlayControls {
+  display: flex;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.overlayControl {
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.overlayControl:hover {
+  border-color: var(--border-default);
+}
+
+.overlayControl--active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+}
+
+.overlayViewport {
+  position: relative;
+  min-height: 400px;
+  display: grid;
+  place-items: center;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  padding: var(--space-xl);
+}
+
+.overlayViewport img {
+  position: absolute;
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  transition: opacity 200ms ease;
+}
+
+.overlayImage {
+  opacity: 0.3;
+}
+
+.overlayImage--active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Mobile comparison styles */
+@media (max-width: 900px) {
+  .compareGrid--2,
+  .compareGrid--3,
+  .compareGrid--4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .inputsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .compareControls {
+    flex-direction: column;
+    gap: var(--space-md);
+    align-items: flex-start;
+  }
+  
+  .compareTabs {
+    width: 100%;
+  }
+  
+  .compareTab {
+    flex: 1;
+    text-align: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .compareInputCard {
+    min-height: 160px;
+    padding: var(--space-sm);
+  }
+  
+  .compareDropZone {
+    min-height: 80px;
+    padding: var(--space-md);
+  }
+  
+  .compareItemViewport {
+    min-height: 150px;
+  }
+  
+  .overlayViewport {
+    min-height: 250px;
+  }
+  
+  .addSlotButton {
+    width: 100%;
+  }
+}
+
+/* Grid View - Matches component classes */
+.gridView {
+  padding: var(--space-lg);
+  min-height: 400px;
+  background: var(--bg-secondary);
+  overflow: auto;
+}
+
+.gridViewContent {
+  display: grid;
+  gap: var(--space-lg);
+  transform-origin: center top;
+  transition: transform 200ms ease;
+}
+
+.gridViewItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  min-height: 200px;
+}
+
+.gridViewItem img {
+  flex: 1;
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  border-radius: var(--radius-sm);
+}
+
+.gridViewItemLabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.gridViewItemLabel span:first-child {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gridViewItemDimensions {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* Overlay Slider View */
+.overlayView {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  min-height: 400px;
+}
+
+.overlaySliderControl {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.overlaySliderControl input[type="range"] {
+  flex: 1;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--border-default);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.overlaySliderControl input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--accent);
+  border-radius: 50%;
+  cursor: grab;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: transform var(--transition-fast);
+}
+
+.overlaySliderControl input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+.overlaySliderControl input[type="range"]::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(0.95);
+}
+
+.overlaySliderControl input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--accent);
+  border-radius: 50%;
+  cursor: grab;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.overlaySliderControl span {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  min-width: 40px;
+  text-align: right;
+}
+
+.overlayViewport {
+  position: relative;
+  flex: 1;
+  min-height: 400px;
+  display: grid;
+  place-items: center;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.overlayBase,
+.overlayTop {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: var(--space-xl);
+}
+
+.overlayBase img,
+.overlayTop img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.overlayTop {
+  z-index: 1;
+}
+
+.overlaySliderHandle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--accent);
+  transform: translateX(-50%);
+  cursor: ew-resize;
+  z-index: 2;
+}
+
+.overlaySliderHandle::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.overlaySliderHandle::after {
+  content: "<>";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: white;
+  pointer-events: none;
+}
+
+.overlayLabel {
+  position: absolute;
+  bottom: var(--space-md);
+  padding: var(--space-xs) var(--space-sm);
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  z-index: 3;
+}
+
+.overlayBase .overlayLabel {
+  left: var(--space-md);
+}
+
+.overlayTop .overlayLabel {
+  right: var(--space-md);
+}
+
+.overlayEmpty {
+  display: grid;
+  place-items: center;
+  padding: var(--space-2xl);
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  text-align: center;
+}
+
+/* Compare Toolbar & Stats */
+.compareToolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-subtle);
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.compareStats {
+  display: flex;
+  gap: var(--space-lg);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.compareZoomControls {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.compareZoomControls button {
+  padding: var(--space-xs) var(--space-sm);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  min-width: 36px;
+  transition: all var(--transition-fast);
+}
+
+.compareZoomControls button:hover {
+  color: var(--text-primary);
+  border-color: var(--border-default);
+  background: var(--bg-elevated);
+}
+
+/* Compare Inputs Container */
+.compareInputsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.compareInputTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.compareInputLabel {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+}
+
+.compareInputAction--danger:hover {
+  color: var(--danger);
+  border-color: var(--danger);
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.compareOutput {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.compareEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  padding: var(--space-3xl);
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.compareEmptyIcon {
+  width: 64px;
+  height: 64px;
+  color: var(--border-default);
+}
+
+.compareEmpty h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.compareEmpty p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* Mobile styles for new components */
+@media (max-width: 900px) {
+  .gridView {
+    padding: var(--space-md);
+  }
+  
+  .gridViewContent {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .gridViewItem {
+    min-height: 150px;
+  }
+  
+  .overlayView {
+    padding: var(--space-md);
+    min-height: 300px;
+  }
+  
+  .overlayViewport {
+    min-height: 300px;
+  }
+  
+  .overlaySliderControl {
+    padding: var(--space-sm);
+  }
+  
+  .compareToolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .compareStats {
+    justify-content: center;
+  }
+  
+  .compareZoomControls {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .gridViewItem img {
+    max-height: 200px;
+  }
+  
+  .gridViewItemLabel span:first-child {
+    font-size: 0.75rem;
+  }
+  
+  .overlayViewport {
+    min-height: 250px;
+    padding: var(--space-md);
+  }
+  
+  .overlaySliderHandle::before {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .overlayLabel {
+    font-size: 0.6875rem;
+    padding: var(--space-xs);
+  }
+  
+  .compareEmpty {
+    padding: var(--space-2xl);
+  }
+  
+  .compareEmptyIcon {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .compareEmpty h3 {
+    font-size: 1rem;
+  }
+}

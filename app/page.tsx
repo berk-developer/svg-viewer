@@ -17,7 +17,6 @@ export default function HomePage() {
     <main className="pageShell">
       <header className="pageHero">
         <h1 className="heroTitle">SVG Viewer</h1>
-        <span className="heroMeta">Client-side · No uploads</span>
       </header>
 
       <SvgWorkbench />
