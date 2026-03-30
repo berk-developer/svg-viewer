@@ -30,6 +30,56 @@
   --font-display: "Fraunces", "Georgia", serif;
   --font-body: "Source Serif 4", "Georgia", serif;
   --font-mono: "SF Mono", "Menlo", monospace;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+}
+
+:root.theme-light {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+  --bg-elevated: #ffffff;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+  --border-subtle: #e5e7eb;
+  --border-default: #d1d5db;
+  --border-strong: #9ca3af;
+  --accent: #4f46e5;
+  --accent-hover: #6366f1;
+  --accent-subtle: rgba(79, 70, 229, 0.1);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not(.theme-dark) {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f9fafb;
+    --bg-tertiary: #f3f4f6;
+    --bg-elevated: #ffffff;
+    --text-primary: #111827;
+    --text-secondary: #4b5563;
+    --text-muted: #9ca3af;
+    --border-subtle: #e5e7eb;
+    --border-default: #d1d5db;
+    --border-strong: #9ca3af;
+    --accent: #4f46e5;
+    --accent-hover: #6366f1;
+    --accent-subtle: rgba(79, 70, 229, 0.1);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
 }
 
 * {
@@ -42,6 +92,10 @@ html {
   color-scheme: dark;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html.theme-light {
+  color-scheme: light;
 }
 
 body {
@@ -96,6 +150,29 @@ button {
   color: white;
 }
 
+::placeholder {
+  color: var(--text-muted);
+  opacity: 1;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
 .srOnly {
   position: absolute;
   width: 1px;
@@ -106,6 +183,29 @@ button {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+.skipLink {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: white;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  z-index: 1000;
+  transition: top var(--transition-fast);
+}
+
+.skipLink:focus {
+  top: var(--space-md);
+  outline: 2px solid var(--accent-hover);
+  outline-offset: 2px;
 }
 
 .pageShell {
@@ -449,6 +549,11 @@ button {
 
 .stageViewport--panning {
   cursor: grabbing;
+}
+
+.stageViewport:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .stageImage {
@@ -1101,10 +1206,13 @@ button {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(12px);
+  background: var(--bg-primary);
   border-bottom: 1px solid var(--border-subtle);
   margin-bottom: var(--space-xl);
+}
+
+:root.theme-light .siteHeader {
+  background: var(--bg-secondary);
 }
 
 .siteHeaderInner {
@@ -1179,6 +1287,36 @@ button {
   color: var(--text-primary);
   background: var(--bg-secondary);
   box-shadow: var(--shadow-sm);
+}
+
+.themeToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.themeToggle:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-default);
+}
+
+.themeToggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.themeToggle svg {
+  width: 18px;
+  height: 18px;
 }
 
 @media (max-width: 640px) {

@@ -74,9 +74,57 @@ export function SvgWorkbench() {
   const [toast, setToast] = useState<ToastState | null>(null);
   const [isPanning, setIsPanning] = useState(false);
   const [pasteValue, setPasteValue] = useState("");
-  const [isExportingPng, setIsExportingPng] = useState<number | null>(null);
+const [isExportingPng, setIsExportingPng] = useState<number | null>(null);
 
-  const markupSource = analysis?.prettySource || currentInput.originalText;
+// Keyboard handler for viewport pan/zoom (WCAG 2.1.1 - accessibility)
+const handleViewportKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+  if (!stageViewportRef.current) return;
+  
+  const viewportRect = stageViewportRef.current.getBoundingClientRect();
+  const panAmount = Math.min(viewportRect.width, viewportRect.height) * 0.1;
+  
+  switch (event.key) {
+    case "ArrowUp": {
+      event.preventDefault();
+      setTransform((current) => ({ ...current, panY: current.panY + panAmount, fitMode: "custom" }));
+      break;
+    }
+    case "ArrowDown": {
+      event.preventDefault();
+      setTransform((current) => ({ ...current, panY: current.panY - panAmount, fitMode: "custom" }));
+      break;
+    }
+    case "ArrowLeft": {
+      event.preventDefault();
+      setTransform((current) => ({ ...current, panX: current.panX + panAmount, fitMode: "custom" }));
+      break;
+    }
+    case "ArrowRight": {
+      event.preventDefault();
+      setTransform((current) => ({ ...current, panX: current.panX - panAmount, fitMode: "custom" }));
+      break;
+    }
+    case "+":
+    case "=": {
+      event.preventDefault();
+      setTransform((current) => ({ ...current, zoom: clamp(current.zoom * 1.12, MIN_ZOOM, MAX_ZOOM), fitMode: "custom" }));
+      break;
+    }
+    case "-": {
+      event.preventDefault();
+      setTransform((current) => ({ ...current, zoom: clamp(current.zoom * 0.9, MIN_ZOOM, MAX_ZOOM), fitMode: "custom" }));
+      break;
+    }
+    case "0": {
+      event.preventDefault();
+      const fitTransform = buildFitTransform(viewportSize, contentSize);
+      if (fitTransform) setTransform(fitTransform);
+      break;
+    }
+  }
+};
+
+const markupSource = analysis?.prettySource || currentInput.originalText;
   const deferredMarkupSource = useDeferredValue(markupSource);
   const exportState = getExportState(currentInput, analysis);
   const contentSize = getRenderableSize(analysis, imageSize);
@@ -345,19 +393,20 @@ export function SvgWorkbench() {
           </div>
 
           <div className="stageToolbar">
-            <div className="toolGroup">
+            <div className="toolGroup" role="toolbar" aria-label="Zoom controls">
               <button className="toolButton" type="button" onClick={() => setTransform(buildFitTransform(viewportSize, contentSize) ?? transform)}>Fit</button>
               <button className="toolButton" type="button" onClick={() => setTransform({ zoom: 1, panX: 0, panY: 0, fitMode: "actual" })}>1:1</button>
               <button className="toolButton" type="button" onClick={() => setTransform((current) => ({ ...current, zoom: clamp(current.zoom * 1.12, MIN_ZOOM, MAX_ZOOM), fitMode: "custom" }))}>+</button>
               <button className="toolButton" type="button" onClick={() => setTransform((current) => ({ ...current, zoom: clamp(current.zoom * 0.9, MIN_ZOOM, MAX_ZOOM), fitMode: "custom" }))}>−</button>
             </div>
-            <div className="toolGroup">
+            <div className="toolGroup" role="toolbar" aria-label="Background selection">
               {(["light", "dark", "checkerboard"] as const).map((item) => (
                 <button
                   key={item}
                   className={`toolButton ${background === item ? "toolButton--active" : ""}`}
                   type="button"
                   onClick={() => setBackground(item)}
+                  aria-pressed={background === item}
                 >
                   {item[0].toUpperCase() + item.slice(1)}
                 </button>
@@ -368,6 +417,10 @@ export function SvgWorkbench() {
           <div
             ref={stageViewportRef}
             className={`stageViewport stageViewport--${background} ${isPanning ? "stageViewport--panning" : ""}`}
+            tabIndex={0}
+            role="img"
+            aria-label={`SVG preview: ${currentInput.name ?? "Untitled"}, ${contentWidth}×${contentHeight} pixels`}
+            onKeyDown={handleViewportKeyDown}
             onWheel={handleWheelZoom}
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}
@@ -418,6 +471,7 @@ export function SvgWorkbench() {
                 className={`panelTab ${panelTab === tab ? "panelTab--active" : ""}`}
                 type="button"
                 onClick={() => setPanelTab(tab)}
+                aria-pressed={panelTab === tab}
               >
                 {tab}
               </button>
@@ -515,7 +569,7 @@ export function SvgWorkbench() {
         )}
       </aside>
 
-      {toast && <div className={`toast toast--${toast.tone}`}>{toast.message}</div>}
+      {toast && <div className={`toast toast--${toast.tone}`} aria-live={toast.tone === "danger" ? "assertive" : "polite"} aria-atomic="true">{toast.message}</div>}
     </section>
   );
 }

@@ -124,9 +124,13 @@ export function SvgCompare() {
   return (
     <section className="compareWorkbench">
       <div className="compareToolbar">
-        <div className="compareTabs">
+        <div className="compareTabs" role="tablist" aria-label="Comparison view">
           <button
             type="button"
+            role="tab"
+            aria-selected={activeTab === "grid"}
+            aria-controls="grid-panel"
+            id="grid-tab"
             className={`compareTab ${activeTab === "grid" ? "compareTab--active" : ""}`}
             onClick={() => setActiveTab("grid")}
           >
@@ -134,6 +138,10 @@ export function SvgCompare() {
           </button>
           <button
             type="button"
+            role="tab"
+            aria-selected={activeTab === "overlay"}
+            aria-controls="overlay-panel"
+            id="overlay-tab"
             className={`compareTab ${activeTab === "overlay" ? "compareTab--active" : ""}`}
             onClick={() => setActiveTab("overlay")}
           >
@@ -180,7 +188,7 @@ export function SvgCompare() {
       {loadedSlots.length > 0 ? (
         <div className="compareOutput">
           {activeTab === "grid" ? (
-            <div className="gridView">
+            <div className="gridView" role="tabpanel" id="grid-panel" aria-labelledby="grid-tab">
               <div
                 className="gridViewContent"
                 style={{
@@ -273,6 +281,7 @@ function CompareInput({
     <div
       className={`compareInputCard ${slot.input ? "compareInputCard--loaded" : ""}`}
     >
+      <span className="srOnly">Slot {index + 1}: {slot.input?.name || "empty"}</span>
       <div className="compareInputHeader">
         <div className="compareInputTitle">
           <span className="compareInputNumber">{index + 1}</span>
@@ -374,7 +383,7 @@ function OverlayView({ slots }: { slots: CompareSlot[] }) {
   const compare = slots[1];
 
   return (
-    <div className="overlayView">
+    <div className="overlayView" role="tabpanel" id="overlay-panel" aria-labelledby="overlay-tab">
       <div className="overlaySliderControl">
         <input
           type="range"
@@ -382,8 +391,10 @@ function OverlayView({ slots }: { slots: CompareSlot[] }) {
           max="100"
           value={sliderPos}
           onChange={(e) => setSliderPos(Number(e.target.value))}
+          aria-label="Comparison reveal slider"
+          aria-valuetext={`Left ${sliderPos}%, Right ${100 - sliderPos}%`}
         />
-        <span>{sliderPos}%</span>
+        <span aria-hidden="true">{sliderPos}%</span>
       </div>
       <div className="overlayViewport">
         <div className="overlayBase">
