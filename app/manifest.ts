@@ -4,14 +4,14 @@ export const dynamic = "force-static";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "SVG Viewer",
-    short_name: "SVG Viewer",
+    name: "SVG Lab",
+    short_name: "SVG Lab",
     description:
       "Client-side SVG viewer for safe preview, worker inspection, and practical export.",
     start_url: "/",
     display: "standalone",
-    background_color: "#f0e8d7",
-    theme_color: "#111111",
+    background_color: "#010104",
+    theme_color: "#010104",
     icons: [
       {
         src: "/icon.svg",
@@ -21,4 +21,3 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
   };
 }
-
