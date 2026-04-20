@@ -5,7 +5,7 @@ import { siteUrl } from "@/lib/site";
 import "./globals.css";
 import { Navigation } from "./navigation";
 
-const appTitle = "SVG Atelier";
+const appTitle = "SVG Lab";
 const appDescription =
   "A public, client-side SVG viewer for safe preview, worker-based inspection, and practical export on Vercel.";
 
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: appTitle,
-    template: "%s | SVG Atelier",
+    template: "%s | SVG Lab",
   },
   description: appDescription,
   applicationName: appTitle,
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "SVG Atelier preview card",
+        alt: "SVG Lab preview card",
       },
     ],
   },
@@ -63,7 +63,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   colorScheme: "dark",
-  themeColor: "#060608",
+  themeColor: "#010104",
 };
 
 export default function RootLayout({
@@ -88,11 +88,12 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap"
           rel="stylesheet"
         />
       </head>
       <body>
+        <div className="ambient-glow" aria-hidden="true" />
         <div className="noise-overlay" aria-hidden="true" />
         <Navigation />
         <main id="main">

@@ -16,7 +16,7 @@ export function Navigation() {
             <path d="M2 17l10 5 10-5" />
             <path d="M2 12l10 5 10-5" />
           </svg>
-          <span className="siteBrandText">Atelier</span>
+          <span className="siteBrandText">SVG Lab</span>
         </a>
         <nav className="mainNav">
           <NavLink href="/" exact>
