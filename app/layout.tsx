@@ -5,7 +5,7 @@ import { siteUrl } from "@/lib/site";
 import "./globals.css";
 import { Navigation } from "./navigation";
 
-const appTitle = "SVG Viewer";
+const appTitle = "SVG Atelier";
 const appDescription =
   "A public, client-side SVG viewer for safe preview, worker-based inspection, and practical export on Vercel.";
 
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: appTitle,
-    template: "%s | SVG Viewer",
+    template: "%s | SVG Atelier",
   },
   description: appDescription,
   applicationName: appTitle,
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "SVG Viewer preview card",
+        alt: "SVG Atelier preview card",
       },
     ],
   },
@@ -63,7 +63,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   colorScheme: "dark",
-  themeColor: "#0a0a0a",
+  themeColor: "#060608",
 };
 
 export default function RootLayout({
@@ -87,12 +87,13 @@ export default function RootLayout({
         ` }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link 
-          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" 
-          rel="stylesheet" 
+        <link
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
         />
       </head>
       <body>
+        <div className="noise-overlay" aria-hidden="true" />
         <Navigation />
         <main id="main">
           {children}
@@ -103,4 +104,3 @@ export default function RootLayout({
     </html>
   );
 }
-

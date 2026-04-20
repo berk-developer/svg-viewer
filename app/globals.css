@@ -1,88 +1,116 @@
+/* ============================================================
+   ATELIER OBSIDIAN — SVG Viewer Design System
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   1. Variables
+   ---------------------------------------------------------- */
 :root {
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #141414;
-  --bg-tertiary: #1a1a1a;
-  --bg-elevated: #1f1f1f;
-  --text-primary: #fafafa;
-  --text-secondary: #a1a1aa;
-  --text-muted: #71717a;
-  --border-subtle: #27272a;
-  --border-default: #3f3f46;
-  --border-strong: #52525b;
-  --accent: #6366f1;
-  --accent-hover: #818cf8;
-  --accent-subtle: rgba(99, 102, 241, 0.15);
-  --success: #22c55e;
-  --warning: #f59e0b;
-  --danger: #ef4444;
+  --bg-primary: #060608;
+  --bg-secondary: #0c0c10;
+  --bg-tertiary: #13131a;
+  --bg-elevated: #1a1a24;
+  --bg-surface: #111118;
+  --text-primary: #f0f0f5;
+  --text-secondary: #8a8a9a;
+  --text-muted: #4a4a5a;
+  --text-dim: #2e2e3e;
+  --border-subtle: #181820;
+  --border-default: #242430;
+  --border-strong: #353545;
+  --accent: #ff6b35;
+  --accent-hover: #ff8555;
+  --accent-subtle: rgba(255, 107, 53, 0.08);
+  --accent-glow: rgba(255, 107, 53, 0.35);
+  --success: #00d084;
+  --warning: #ffb800;
+  --danger: #ff4757;
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
   --space-lg: 1.5rem;
   --space-xl: 2rem;
   --space-2xl: 3rem;
-  --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --transition-fast: 150ms ease;
-  --font-display: "Fraunces", "Georgia", serif;
-  --font-body: "Source Serif 4", "Georgia", serif;
-  --font-mono: "SF Mono", "Menlo", monospace;
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
+  --space-3xl: 4rem;
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 24px rgba(255, 107, 53, 0.15);
+  --transition-fast: 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  --font-display: "Playfair Display", "Georgia", serif;
+  --font-body: "JetBrains Mono", "SF Mono", "Menlo", monospace;
+  --font-mono: "JetBrains Mono", "SF Mono", "Menlo", monospace;
+  --text-xs: 0.6875rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
   --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
   --leading-tight: 1.25;
-  --leading-normal: 1.5;
-  --leading-relaxed: 1.75;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.85;
   --font-normal: 400;
   --font-medium: 500;
   --font-semibold: 600;
+  --font-bold: 700;
 }
 
 :root.theme-light {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f9fafb;
-  --bg-tertiary: #f3f4f6;
+  --bg-primary: #fafaf9;
+  --bg-secondary: #f5f5f4;
+  --bg-tertiary: #e7e5e4;
   --bg-elevated: #ffffff;
-  --text-primary: #111827;
-  --text-secondary: #4b5563;
-  --text-muted: #9ca3af;
-  --border-subtle: #e5e7eb;
-  --border-default: #d1d5db;
-  --border-strong: #9ca3af;
-  --accent: #4f46e5;
-  --accent-hover: #6366f1;
-  --accent-subtle: rgba(79, 70, 229, 0.1);
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --bg-surface: #f0eeeb;
+  --text-primary: #1c1917;
+  --text-secondary: #57534e;
+  --text-muted: #a8a29e;
+  --text-dim: #d6d3d1;
+  --border-subtle: #e7e5e4;
+  --border-default: #d6d3d1;
+  --border-strong: #a8a29e;
+  --accent: #ea580c;
+  --accent-hover: #c2410c;
+  --accent-subtle: rgba(234, 88, 12, 0.08);
+  --accent-glow: rgba(234, 88, 12, 0.25);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 24px rgba(234, 88, 12, 0.12);
 }
 
 @media (prefers-color-scheme: light) {
   :root:not(.theme-dark) {
-    --bg-primary: #ffffff;
-    --bg-secondary: #f9fafb;
-    --bg-tertiary: #f3f4f6;
+    --bg-primary: #fafaf9;
+    --bg-secondary: #f5f5f4;
+    --bg-tertiary: #e7e5e4;
     --bg-elevated: #ffffff;
-    --text-primary: #111827;
-    --text-secondary: #4b5563;
-    --text-muted: #9ca3af;
-    --border-subtle: #e5e7eb;
-    --border-default: #d1d5db;
-    --border-strong: #9ca3af;
-    --accent: #4f46e5;
-    --accent-hover: #6366f1;
-    --accent-subtle: rgba(79, 70, 229, 0.1);
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --bg-surface: #f0eeeb;
+    --text-primary: #1c1917;
+    --text-secondary: #57534e;
+    --text-muted: #a8a29e;
+    --text-dim: #d6d3d1;
+    --border-subtle: #e7e5e4;
+    --border-default: #d6d3d1;
+    --border-strong: #a8a29e;
+    --accent: #ea580c;
+    --accent-hover: #c2410c;
+    --accent-subtle: rgba(234, 88, 12, 0.08);
+    --accent-glow: rgba(234, 88, 12, 0.25);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.1);
+    --shadow-glow: 0 0 24px rgba(234, 88, 12, 0.12);
   }
 }
 
-* {
+/* ----------------------------------------------------------
+   2. Reset & Base
+   ---------------------------------------------------------- */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -100,36 +128,63 @@ html.theme-light {
 
 body {
   font-family: var(--font-body);
-  font-size: 15px;
-  line-height: 1.5;
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
   color: var(--text-primary);
   background-color: var(--bg-primary);
   min-height: 100vh;
+  letter-spacing: -0.01em;
 }
 
-h1, h2, h3 {
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ----------------------------------------------------------
+   3. Typography
+   ---------------------------------------------------------- */
+h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-weight: 600;
-  line-height: 1.2;
+  line-height: var(--leading-tight);
   color: var(--text-primary);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: 700;
 }
 
 h2 {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 h3 {
-  font-size: 1rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 0.9375rem;
+  font-weight: 600;
 }
 
 p {
   color: var(--text-secondary);
+}
+
+pre,
+code {
+  font-family: var(--font-mono);
 }
 
 button {
@@ -138,6 +193,7 @@ button {
   background: none;
   transition: all var(--transition-fast);
   font-family: inherit;
+  font-size: inherit;
 }
 
 :focus-visible {
@@ -147,32 +203,38 @@ button {
 
 ::selection {
   background-color: var(--accent);
-  color: white;
+  color: #fff;
 }
 
 ::placeholder {
   color: var(--text-muted);
-  opacity: 1;
+  opacity: 0.7;
 }
 
+/* ----------------------------------------------------------
+   4. Scrollbar
+   ---------------------------------------------------------- */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--border-strong);
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted);
 }
 
+/* ----------------------------------------------------------
+   5. Utilities
+   ---------------------------------------------------------- */
 .srOnly {
   position: absolute;
   width: 1px;
@@ -191,11 +253,11 @@ button {
   left: 50%;
   transform: translateX(-50%);
   background: var(--accent);
-  color: white;
+  color: #fff;
   padding: var(--space-sm) var(--space-md);
   border-radius: var(--radius-sm);
   font-family: var(--font-body);
-  font-size: 0.875rem;
+  font-size: var(--text-sm);
   font-weight: 500;
   text-decoration: none;
   z-index: 1000;
@@ -204,30 +266,48 @@ button {
 
 .skipLink:focus {
   top: var(--space-md);
-  outline: 2px solid var(--accent-hover);
-  outline-offset: 2px;
 }
 
+/* ----------------------------------------------------------
+   6. Layout
+   ---------------------------------------------------------- */
 .pageShell {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: var(--space-xl);
+  animation: fadeInUp 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .pageHero {
-  margin-bottom: var(--space-xl);
-  padding: var(--space-lg) 0;
+  margin-bottom: var(--space-2xl);
+  padding: var(--space-lg) 0 var(--space-xl);
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   gap: var(--space-lg);
   border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+}
+
+.pageHero::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 120px;
+  height: 1px;
+  background: var(--accent);
 }
 
 .heroTitle {
-  font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .heroMeta {
@@ -235,14 +315,18 @@ button {
   font-size: 0.6875rem;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
 }
 
+/* ----------------------------------------------------------
+   7. Workbench
+   ---------------------------------------------------------- */
 .workbench {
   display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: var(--space-xl);
+  grid-template-columns: 1fr 360px;
+  gap: var(--space-2xl);
   align-items: start;
+  animation: fadeInUp 700ms cubic-bezier(0.22, 1, 0.36, 1) 100ms both;
 }
 
 .workbench--drop::before {
@@ -252,18 +336,21 @@ button {
   z-index: 100;
   display: grid;
   place-items: center;
-  background: rgba(10, 10, 10, 0.95);
+  background: rgba(6, 6, 8, 0.96);
   border: 2px dashed var(--accent);
   border-radius: var(--radius-lg);
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   color: var(--accent);
+  letter-spacing: -0.02em;
+  backdrop-filter: blur(8px);
+  animation: pulseBorder 2s ease-in-out infinite;
 }
 
 .workspaceMain {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+  gap: var(--space-xl);
 }
 
 .importGrid {
@@ -272,22 +359,38 @@ button {
   gap: var(--space-lg);
 }
 
-@media (max-width: 768px) {
-  .importGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
+/* ----------------------------------------------------------
+   8. Surface Cards & Forms
+   ---------------------------------------------------------- */
 .surfaceCard {
   background: var(--bg-secondary);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: var(--space-lg);
-  transition: border-color var(--transition-fast);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.surfaceCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-base);
 }
 
 .surfaceCard:hover {
   border-color: var(--border-default);
+  box-shadow: var(--shadow-md);
+}
+
+.surfaceCard:hover::before {
+  opacity: 1;
 }
 
 .surfaceHeading {
@@ -298,11 +401,12 @@ button {
 }
 
 .surfaceHeading h3 {
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
   color: var(--text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
 }
 
 .dropZone {
@@ -311,19 +415,21 @@ button {
   align-items: center;
   justify-content: center;
   gap: var(--space-md);
-  border: 2px dashed var(--border-default);
+  border: 1.5px dashed var(--border-default);
   border-radius: var(--radius-md);
   padding: var(--space-2xl) var(--space-xl);
   background: var(--bg-tertiary);
-  transition: all var(--transition-fast);
+  transition: all var(--transition-base);
   cursor: pointer;
-  min-height: 140px;
+  min-height: 160px;
+  position: relative;
 }
 
 .dropZone:hover {
   border-color: var(--accent);
   background: var(--accent-subtle);
-  transform: translateY(-1px);
+  box-shadow: inset 0 0 32px var(--accent-subtle);
+  transform: translateY(-2px);
 }
 
 .dropZone:active {
@@ -331,20 +437,22 @@ button {
 }
 
 .dropZoneIcon {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   color: var(--text-muted);
-  transition: color var(--transition-fast);
+  transition: color var(--transition-base), transform var(--transition-base);
 }
 
 .dropZone:hover .dropZoneIcon {
   color: var(--accent);
+  transform: scale(1.1);
 }
 
 .dropZoneText {
-  font-size: 0.875rem;
+  font-size: var(--text-sm);
   font-weight: 500;
   color: var(--text-secondary);
+  letter-spacing: -0.01em;
 }
 
 .dropZoneButton {
@@ -358,24 +466,26 @@ button {
   border: 1px solid var(--border-default);
   border-radius: var(--radius-sm);
   margin-top: var(--space-xs);
+  font-family: var(--font-mono);
 }
 
 .dropZone:hover .dropZoneButton {
   border-color: var(--accent);
   background: var(--accent);
-  color: white;
+  color: #fff;
+  box-shadow: var(--shadow-glow);
 }
 
 .dropZoneHint {
-  font-size: 0.6875rem;
+  font-size: var(--text-xs);
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
 }
 
 .textArea {
   width: 100%;
-  min-height: 140px;
+  min-height: 160px;
   padding: var(--space-md);
   border: 1px solid var(--border-default);
   border-radius: var(--radius-md);
@@ -383,9 +493,9 @@ button {
   color: var(--text-primary);
   font-family: var(--font-mono);
   font-size: 0.8125rem;
-  line-height: 1.5;
+  line-height: 1.6;
   resize: vertical;
-  transition: all var(--transition-fast);
+  transition: all var(--transition-base);
 }
 
 .textArea:hover {
@@ -396,11 +506,7 @@ button {
   border-color: var(--accent);
   background: var(--bg-secondary);
   outline: none;
-}
-
-.textArea:focus {
-  border-color: var(--accent);
-  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-subtle);
 }
 
 .textArea::placeholder {
@@ -419,26 +525,33 @@ button {
   color: var(--text-primary);
   border: 1px solid var(--border-default);
   transition: all var(--transition-fast);
+  font-family: var(--font-mono);
+  letter-spacing: -0.01em;
 }
 
 .actionButton:hover:not(:disabled) {
   background: var(--bg-elevated);
   border-color: var(--border-strong);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }
 
 .actionButton:disabled {
-  opacity: 0.4;
+  opacity: 0.35;
   cursor: not-allowed;
 }
 
 .actionButton--primary {
   background: var(--accent);
-  color: white;
+  color: #fff;
   border-color: var(--accent);
 }
 
 .actionButton--primary:hover:not(:disabled) {
   background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-1px);
 }
 
 .inputActions {
@@ -447,6 +560,9 @@ button {
   margin-top: var(--space-md);
 }
 
+/* ----------------------------------------------------------
+   9. Stage
+   ---------------------------------------------------------- */
 .stageCard {
   padding: 0;
   overflow: hidden;
@@ -454,6 +570,11 @@ button {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-base);
+}
+
+.stageCard:hover {
+  box-shadow: var(--shadow-md);
 }
 
 .stageHeader {
@@ -466,21 +587,25 @@ button {
 }
 
 .stageHeader h3 {
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
   color: var(--text-secondary);
+  letter-spacing: -0.01em;
 }
 
 .chip {
   display: inline-flex;
   align-items: center;
   padding: var(--space-xs) var(--space-sm);
-  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
   font-weight: 500;
   border-radius: var(--radius-sm);
-  background: var(--bg-elevated);
+  background: var(--bg-primary);
   color: var(--text-muted);
   border: 1px solid var(--border-subtle);
+  letter-spacing: 0.04em;
 }
 
 .stageToolbar {
@@ -491,60 +616,72 @@ button {
   border-bottom: 1px solid var(--border-subtle);
   background: var(--bg-primary);
   gap: var(--space-sm);
+  flex-wrap: wrap;
 }
 
 .toolGroup {
   display: flex;
-  gap: var(--space-xs);
+  gap: 2px;
+  background: var(--bg-tertiary);
+  padding: 2px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
 }
 
 .toolButton {
   padding: var(--space-xs) var(--space-sm);
-  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
   font-weight: 500;
-  border-radius: var(--radius-sm);
+  border-radius: 2px;
   background: transparent;
-  border: 1px solid var(--border-subtle);
+  border: 1px solid transparent;
   color: var(--text-muted);
+  transition: all var(--transition-fast);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .toolButton:hover {
   color: var(--text-primary);
-  border-color: var(--border-default);
+  background: var(--bg-secondary);
 }
 
 .toolButton--active {
-  background: var(--accent);
-  color: white;
+  background: var(--bg-secondary);
+  color: var(--accent);
   border-color: var(--accent);
+  box-shadow: 0 0 8px var(--accent-subtle);
 }
 
 .stageViewport {
   position: relative;
-  min-height: 400px;
+  min-height: 420px;
   background: var(--bg-primary);
   touch-action: none;
   user-select: none;
   overflow: hidden;
+  display: grid;
+  place-items: center;
 }
 
 .stageViewport--light {
-  background: #e5e5e5;
+  background: #e8e6e1;
 }
 
 .stageViewport--dark {
-  background: #0a0a0a;
+  background: #060608;
 }
 
 .stageViewport--checkerboard {
-  background:
-    linear-gradient(45deg, #1a1a1a 25%, transparent 25%),
-    linear-gradient(-45deg, #1a1a1a 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #1a1a1a 75%),
-    linear-gradient(-45deg, transparent 75%, #1a1a1a 75%),
-    #0a0a0a;
-  background-size: 20px 20px;
-  background-position: 0 0, 0 10px, 10px -10px, -10px 0, 0 0;
+  background-color: var(--bg-primary);
+  background-image:
+    linear-gradient(45deg, var(--bg-tertiary) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--bg-tertiary) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--bg-tertiary) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--bg-tertiary) 75%);
+  background-size: 24px 24px;
+  background-position: 0 0, 0 12px, 12px -12px, -12px 0;
 }
 
 .stageViewport--panning {
@@ -553,7 +690,7 @@ button {
 
 .stageViewport:focus-visible {
   outline: 2px solid var(--accent);
-  outline-offset: 2px;
+  outline-offset: -2px;
 }
 
 .stageImage {
@@ -567,6 +704,7 @@ button {
   box-shadow: var(--shadow-md);
   will-change: transform;
   pointer-events: none;
+  transition: opacity 300ms ease;
 }
 
 .stageOverlay {
@@ -576,13 +714,14 @@ button {
   background: var(--bg-secondary);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
+  backdrop-filter: blur(4px);
 }
 
 .stageOverlayLabel {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   color: var(--text-muted);
   margin-bottom: 2px;
 }
@@ -594,7 +733,7 @@ button {
 
 .stageFooter {
   display: flex;
-  gap: var(--space-lg);
+  gap: var(--space-xl);
   padding: var(--space-sm) var(--space-lg);
   border-top: 1px solid var(--border-subtle);
   background: var(--bg-tertiary);
@@ -611,14 +750,19 @@ button {
   font-size: 0.6875rem;
   text-transform: uppercase;
   color: var(--text-muted);
+  letter-spacing: 0.06em;
 }
 
 .stageFooterValue {
+  font-family: var(--font-mono);
   font-size: 0.8125rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-primary);
 }
 
+/* ----------------------------------------------------------
+   10. Panel
+   ---------------------------------------------------------- */
 .panelCard {
   position: sticky;
   top: var(--space-xl);
@@ -626,6 +770,12 @@ button {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-base);
+}
+
+.panelCard:hover {
+  box-shadow: var(--shadow-md);
 }
 
 .panelHeader {
@@ -638,32 +788,44 @@ button {
 }
 
 .panelHeader h3 {
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .panelTabs {
   display: flex;
   gap: 2px;
+  background: var(--bg-primary);
+  padding: 2px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
 }
 
 .panelTab {
   padding: var(--space-xs) var(--space-sm);
-  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
   font-weight: 500;
-  border-radius: var(--radius-sm);
+  border-radius: 2px;
   color: var(--text-muted);
   border: 1px solid transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: all var(--transition-fast);
 }
 
 .panelTab:hover {
   color: var(--text-primary);
+  background: var(--bg-secondary);
 }
 
 .panelTab--active {
-  color: var(--text-primary);
-  background: var(--bg-elevated);
-  border-color: var(--border-default);
+  color: var(--accent);
+  background: var(--bg-secondary);
+  border-color: var(--accent);
+  box-shadow: 0 0 8px var(--accent-subtle);
 }
 
 .panelContent {
@@ -685,11 +847,14 @@ button {
   border-radius: 2px;
 }
 
+/* ----------------------------------------------------------
+   11. Metrics & Info
+   ---------------------------------------------------------- */
 .metricGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-sm);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-xl);
 }
 
 .metricCard {
@@ -697,6 +862,11 @@ button {
   background: var(--bg-tertiary);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
+  transition: border-color var(--transition-fast);
+}
+
+.metricCard:hover {
+  border-color: var(--border-default);
 }
 
 .metricLabel {
@@ -704,18 +874,20 @@ button {
   font-size: 0.625rem;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 2px;
+  margin-bottom: 4px;
+  letter-spacing: 0.08em;
 }
 
 .metricValue {
   font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.125rem;
+  font-weight: 700;
   color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
 .infoSection {
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-xl);
 }
 
 .infoSectionHeading {
@@ -726,7 +898,8 @@ button {
 }
 
 .infoSectionHeading h4 {
-  font-size: 0.8125rem;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--text-primary);
 }
@@ -746,11 +919,14 @@ button {
   display: inline-flex;
   align-items: center;
   padding: var(--space-xs) var(--space-sm);
+  font-family: var(--font-mono);
   font-size: 0.6875rem;
   border-radius: var(--radius-sm);
   background: var(--bg-tertiary);
   color: var(--text-muted);
   border: 1px solid var(--border-subtle);
+  transition: all var(--transition-fast);
+  letter-spacing: 0.02em;
 }
 
 .featureTag--active {
@@ -762,11 +938,13 @@ button {
 .featureTag--warning.featureTag--active {
   background: var(--warning);
   border-color: var(--warning);
+  color: var(--bg-primary);
 }
 
 .featureTag--danger.featureTag--active {
   background: var(--danger);
   border-color: var(--danger);
+  color: #fff;
 }
 
 .countList,
@@ -785,6 +963,7 @@ button {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   font-size: 0.8125rem;
+  font-family: var(--font-mono);
 }
 
 .paletteRow {
@@ -805,13 +984,19 @@ button {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   color: var(--text-secondary);
+  transition: border-color var(--transition-fast);
+}
+
+.paletteSwatch:hover {
+  border-color: var(--border-default);
 }
 
 .paletteChip {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 2px;
   border: 1px solid var(--border-default);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.2);
 }
 
 .listBlock {
@@ -831,6 +1016,7 @@ button {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   border-left: 2px solid transparent;
+  transition: border-color var(--transition-fast);
 }
 
 .warningRow--info {
@@ -859,6 +1045,7 @@ button {
   border-radius: var(--radius-sm);
   background: var(--bg-secondary);
   color: var(--text-muted);
+  letter-spacing: 0.06em;
 }
 
 .warningRow--info .warningBadge {
@@ -866,6 +1053,19 @@ button {
   background: var(--accent-subtle);
 }
 
+.warningRow--warning .warningBadge {
+  color: var(--warning);
+  background: rgba(255, 184, 0, 0.1);
+}
+
+.warningRow--danger .warningBadge {
+  color: var(--danger);
+  background: rgba(255, 71, 87, 0.1);
+}
+
+/* ----------------------------------------------------------
+   12. Markup & Export
+   ---------------------------------------------------------- */
 .markupPane {
   margin: 0;
   padding: var(--space-md);
@@ -873,11 +1073,12 @@ button {
   color: var(--text-secondary);
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  line-height: 1.5;
+  line-height: 1.6;
   border-radius: var(--radius-sm);
   overflow-x: auto;
   white-space: pre-wrap;
   word-break: break-word;
+  border: 1px solid var(--border-subtle);
 }
 
 .exportBox {
@@ -886,10 +1087,16 @@ button {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   margin-bottom: var(--space-md);
+  transition: border-color var(--transition-fast);
+}
+
+.exportBox:hover {
+  border-color: var(--border-default);
 }
 
 .exportBox h4 {
-  font-size: 0.8125rem;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
   font-weight: 600;
   margin-bottom: var(--space-xs);
   color: var(--text-primary);
@@ -906,29 +1113,24 @@ button {
   gap: var(--space-xs);
 }
 
+/* ----------------------------------------------------------
+   13. Toast
+   ---------------------------------------------------------- */
 .toast {
   position: fixed;
   right: var(--space-xl);
   bottom: var(--space-xl);
   z-index: 100;
-  max-width: 320px;
+  max-width: 340px;
   padding: var(--space-md);
   background: var(--bg-secondary);
   border: 1px solid var(--border-default);
   border-radius: var(--radius-md);
   font-size: 0.875rem;
-  animation: slideIn 150ms ease;
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  font-family: var(--font-mono);
+  animation: slideIn 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-md);
 }
 
 .toast--success {
@@ -950,6 +1152,7 @@ button {
   font-size: 0.75rem;
   color: var(--text-muted);
   margin-top: var(--space-sm);
+  font-family: var(--font-mono);
 }
 
 .inlineFeedback--success {
@@ -962,257 +1165,22 @@ button {
   font-style: italic;
 }
 
-@media (max-width: 900px) {
-  .workbench {
-    grid-template-columns: 1fr;
-  }
-  
-  .panelCard {
-    position: static;
-  }
-  
-  .panelContent {
-    max-height: none;
-  }
-  
-  .pageHero {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-sm);
-  }
-}
-
-@media (max-width: 768px) {
-  .importGrid {
-    grid-template-columns: 1fr;
-  }
-  
-  .dropZone {
-    padding: var(--space-xl) var(--space-md);
-    min-height: 120px;
-  }
-  
-  .textArea {
-    min-height: 100px;
-  }
-}
-
-@media (max-width: 640px) {
-  :root {
-    --space-xl: 1.5rem;
-    --space-2xl: 2rem;
-  }
-  
-  .pageShell {
-    padding: var(--space-md);
-  }
-  
-  .pageHero {
-    padding: var(--space-sm) 0;
-  }
-  
-  .heroTitle {
-    font-size: 1.125rem;
-  }
-  
-  .heroMeta {
-    font-size: 0.625rem;
-  }
-  
-  .surfaceCard {
-    padding: var(--space-md);
-  }
-  
-  .dropZone {
-    min-height: 100px;
-    padding: var(--space-lg) var(--space-md);
-    gap: var(--space-sm);
-  }
-  
-  .dropZoneIcon {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .dropZoneText {
-    font-size: 0.8125rem;
-  }
-  
-  .dropZoneButton {
-    padding: var(--space-xs) var(--space-sm);
-    font-size: 0.75rem;
-  }
-  
-  .dropZoneHint {
-    font-size: 0.625rem;
-  }
-  
-  .textArea {
-    min-height: 80px;
-    font-size: 0.75rem;
-  }
-  
-  .actionButton {
-    padding: var(--space-sm) var(--space-md);
-    min-height: 44px;
-    font-size: 0.875rem;
-  }
-  
-  .stageHeader {
-    padding: var(--space-sm) var(--space-md);
-  }
-  
-  .stageHeader h3 {
-    font-size: 0.8125rem;
-  }
-  
-  .stageToolbar {
-    padding: var(--space-sm);
-    gap: var(--space-sm);
-  }
-  
-  .toolGroup {
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .toolButton {
-    flex: 1;
-    min-height: 40px;
-    font-size: 0.8125rem;
-  }
-  
-  .stageViewport {
-    min-height: 280px;
-  }
-  
-  .stageImage {
-    max-width: 90vw;
-    max-height: 70vh;
-  }
-  
-  .stageFooter {
-    padding: var(--space-sm) var(--space-md);
-    gap: var(--space-md);
-    flex-wrap: wrap;
-  }
-  
-  .stageFooterItem {
-    flex: 1;
-    min-width: 80px;
-  }
-  
-  .panelHeader {
-    padding: var(--space-sm) var(--space-md);
-  }
-  
-  .panelTab {
-    padding: var(--space-xs) var(--space-sm);
-    min-height: 36px;
-    font-size: 0.8125rem;
-  }
-  
-  .panelContent {
-    padding: var(--space-md);
-  }
-  
-  .metricGrid {
-    grid-template-columns: 1fr;
-    gap: var(--space-sm);
-  }
-  
-  .metricCard {
-    padding: var(--space-sm);
-  }
-  
-  .metricValue {
-    font-size: 0.9375rem;
-  }
-  
-  .featureTag {
-    padding: var(--space-xs) var(--space-sm);
-    font-size: 0.75rem;
-  }
-  
-  .paletteRow {
-    gap: var(--space-xs);
-  }
-  
-  .paletteSwatch {
-    padding: var(--space-xs) var(--space-sm);
-    font-size: 0.6875rem;
-  }
-  
-  .countRow {
-    padding: var(--space-xs) var(--space-sm);
-    font-size: 0.8125rem;
-  }
-  
-  .exportBox {
-    padding: var(--space-sm);
-  }
-  
-  .toast {
-    right: var(--space-md);
-    left: var(--space-md);
-    bottom: var(--space-md);
-    max-width: none;
-  }
-}
-
-@media (max-width: 380px) {
-  .heroTitle {
-    font-size: 1rem;
-  }
-  
-  .surfaceHeading h3 {
-    font-size: 0.75rem;
-  }
-  
-  .toolButton {
-    font-size: 0.75rem;
-    padding: var(--space-xs);
-  }
-  
-  .stageViewport {
-    min-height: 240px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-@media (hover: none) and (pointer: coarse) {
-  .toolButton,
-  .actionButton,
-  .panelTab,
-  .dropZone {
-    min-height: 44px;
-  }
-  
-  .dropZone:active {
-    transform: scale(0.98);
-  }
-}
-
-/* Navigation */
+/* ----------------------------------------------------------
+   14. Navigation
+   ---------------------------------------------------------- */
 .siteHeader {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: var(--bg-primary);
+  background: rgba(6, 6, 8, 0.85);
   border-bottom: 1px solid var(--border-subtle);
   margin-bottom: var(--space-xl);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 :root.theme-light .siteHeader {
-  background: var(--bg-secondary);
+  background: rgba(250, 250, 249, 0.85);
 }
 
 .siteHeaderInner {
@@ -1230,33 +1198,35 @@ button {
   align-items: center;
   gap: var(--space-sm);
   color: var(--text-primary);
-  font-weight: 600;
-  font-size: 1rem;
+  font-weight: 700;
+  font-size: 1.125rem;
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
   transition: opacity var(--transition-fast);
-}
-
-.siteBrand:hover {
-  opacity: 0.8;
   text-decoration: none;
 }
 
+.siteBrand:hover {
+  opacity: 0.75;
+}
+
 .siteBrandIcon {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   color: var(--accent);
 }
 
 .siteBrandText {
   font-family: var(--font-display);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 .mainNav {
   display: flex;
   gap: var(--space-xs);
   background: var(--bg-tertiary);
-  padding: 4px;
-  border-radius: var(--radius-lg);
+  padding: 3px;
+  border-radius: var(--radius-md);
   border: 1px solid var(--border-subtle);
 }
 
@@ -1268,8 +1238,12 @@ button {
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--text-secondary);
-  border-radius: var(--radius-md);
+  border-radius: 4px;
   transition: all var(--transition-fast);
+  font-family: var(--font-mono);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .navLink svg {
@@ -1280,13 +1254,12 @@ button {
 .navLink:hover {
   color: var(--text-primary);
   background: var(--bg-secondary);
-  text-decoration: none;
 }
 
 .navLink--active {
-  color: var(--text-primary);
+  color: var(--accent);
   background: var(--bg-secondary);
-  box-shadow: var(--shadow-sm);
+  box-shadow: inset 0 0 0 1px var(--accent-subtle);
 }
 
 .themeToggle {
@@ -1305,8 +1278,9 @@ button {
 
 .themeToggle:hover {
   background: var(--bg-secondary);
-  color: var(--text-primary);
-  border-color: var(--border-default);
+  color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-subtle);
 }
 
 .themeToggle:focus-visible {
@@ -1319,41 +1293,14 @@ button {
   height: 18px;
 }
 
-@media (max-width: 640px) {
-  .siteHeaderInner {
-    padding: var(--space-sm) var(--space-md);
-  }
-  
-  .siteBrandText {
-    display: none;
-  }
-  
-  .mainNav {
-    flex: 1;
-    justify-content: center;
-  }
-  
-  .navLink {
-    flex: 1;
-    justify-content: center;
-    padding: var(--space-sm);
-  }
-  
-  .navLink span {
-    display: none;
-  }
-  
-  .navLink svg {
-    width: 20px;
-    height: 20px;
-  }
-}
-
-/* SVG Comparison */
+/* ----------------------------------------------------------
+   15. Compare Page
+   ---------------------------------------------------------- */
 .compareWorkbench {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
+  gap: var(--space-2xl);
+  animation: fadeInUp 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .compareControls {
@@ -1366,10 +1313,11 @@ button {
 
 .compareTabs {
   display: flex;
-  gap: var(--space-xs);
+  gap: 2px;
   background: var(--bg-tertiary);
-  padding: 4px;
+  padding: 3px;
   border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
 }
 
 .compareTab {
@@ -1377,18 +1325,24 @@ button {
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--text-secondary);
-  border-radius: var(--radius-sm);
+  border-radius: 4px;
   transition: all var(--transition-fast);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 1px solid transparent;
 }
 
 .compareTab:hover {
   color: var(--text-primary);
+  background: var(--bg-secondary);
 }
 
 .compareTab--active {
-  color: var(--text-primary);
+  color: var(--accent);
   background: var(--bg-secondary);
-  box-shadow: var(--shadow-sm);
+  border-color: var(--accent);
+  box-shadow: 0 0 8px var(--accent-subtle);
 }
 
 .compareCount {
@@ -1396,7 +1350,7 @@ button {
   font-size: 0.75rem;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 }
 
 .inputsSection {
@@ -1407,7 +1361,7 @@ button {
 
 .inputsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: var(--space-md);
 }
 
@@ -1421,16 +1375,18 @@ button {
   font-weight: 500;
   color: var(--text-secondary);
   background: var(--bg-secondary);
-  border: 2px dashed var(--border-default);
+  border: 1.5px dashed var(--border-default);
   border-radius: var(--radius-md);
-  transition: all var(--transition-fast);
+  transition: all var(--transition-base);
   align-self: flex-start;
+  font-family: var(--font-mono);
 }
 
 .addSlotButton:hover {
   color: var(--accent);
   border-color: var(--accent);
   background: var(--accent-subtle);
+  box-shadow: inset 0 0 24px var(--accent-subtle);
 }
 
 .addSlotButton svg {
@@ -1444,14 +1400,15 @@ button {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: var(--space-md);
-  transition: all var(--transition-fast);
-  min-height: 200px;
+  transition: all var(--transition-base);
+  min-height: 220px;
   display: flex;
   flex-direction: column;
 }
 
 .compareInputCard--loaded {
   border-color: var(--accent);
+  box-shadow: 0 0 16px var(--accent-subtle);
 }
 
 .compareInputCard--drag {
@@ -1479,11 +1436,12 @@ button {
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--text-muted);
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   display: grid;
   place-items: center;
-  background: var(--bg-tertiary);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
 }
 
@@ -1493,20 +1451,22 @@ button {
 }
 
 .compareInputAction {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   display: grid;
   place-items: center;
   color: var(--text-muted);
-  background: var(--bg-tertiary);
+  background: var(--bg-primary);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   transition: all var(--transition-fast);
+  cursor: pointer;
 }
 
 .compareInputAction:hover {
   color: var(--text-primary);
   border-color: var(--border-default);
+  background: var(--bg-tertiary);
 }
 
 .compareInputAction svg {
@@ -1529,9 +1489,10 @@ button {
   height: 100%;
   object-fit: contain;
   max-height: 160px;
-  background: var(--bg-tertiary);
+  background: var(--bg-primary);
   border-radius: var(--radius-sm);
   padding: var(--space-sm);
+  border: 1px solid var(--border-subtle);
 }
 
 .compareInputInfo {
@@ -1548,6 +1509,7 @@ button {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-family: var(--font-mono);
 }
 
 .compareInputMeta {
@@ -1573,11 +1535,11 @@ button {
   justify-content: center;
   gap: var(--space-sm);
   padding: var(--space-lg);
-  border: 2px dashed var(--border-default);
+  border: 1.5px dashed var(--border-default);
   border-radius: var(--radius-sm);
   background: var(--bg-tertiary);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all var(--transition-base);
   flex: 1;
   min-height: 100px;
 }
@@ -1585,17 +1547,24 @@ button {
 .compareDropZone:hover {
   border-color: var(--accent);
   background: var(--accent-subtle);
+  box-shadow: inset 0 0 24px var(--accent-subtle);
 }
 
 .compareDropZone svg {
   width: 24px;
   height: 24px;
   color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.compareDropZone:hover svg {
+  color: var(--accent);
 }
 
 .compareDropZone span {
   font-size: 0.8125rem;
   color: var(--text-secondary);
+  font-family: var(--font-mono);
 }
 
 .compareInputOr {
@@ -1603,7 +1572,8 @@ button {
   font-size: 0.75rem;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
+  font-family: var(--font-mono);
 }
 
 .compareInputTextarea {
@@ -1620,6 +1590,7 @@ button {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   overflow: hidden;
+  box-shadow: var(--shadow-sm);
 }
 
 .outputHeader {
@@ -1632,8 +1603,9 @@ button {
 }
 
 .outputHeader h3 {
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
 }
 
 .outputMeta {
@@ -1681,6 +1653,11 @@ button {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: var(--space-sm);
+  transition: border-color var(--transition-fast);
+}
+
+.compareItem:hover {
+  border-color: var(--border-default);
 }
 
 .compareItemHeader {
@@ -1697,6 +1674,7 @@ button {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-family: var(--font-mono);
 }
 
 .compareItemSize {
@@ -1714,6 +1692,7 @@ button {
   background: var(--bg-primary);
   border-radius: var(--radius-sm);
   padding: var(--space-md);
+  border: 1px solid var(--border-subtle);
 }
 
 .compareItemViewport img {
@@ -1729,10 +1708,18 @@ button {
   padding: var(--space-3xl);
   color: var(--text-muted);
   font-size: 0.9375rem;
+  text-align: center;
 }
 
+/* ----------------------------------------------------------
+   16. Overlay View
+   ---------------------------------------------------------- */
 .overlayView {
   padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  min-height: 400px;
 }
 
 .overlayControls {
@@ -1751,20 +1738,25 @@ button {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   transition: all var(--transition-fast);
+  font-family: var(--font-mono);
+  cursor: pointer;
 }
 
 .overlayControl:hover {
   border-color: var(--border-default);
+  color: var(--text-primary);
 }
 
 .overlayControl--active {
   color: var(--accent);
   border-color: var(--accent);
   background: var(--accent-subtle);
+  box-shadow: 0 0 8px var(--accent-subtle);
 }
 
 .overlayViewport {
   position: relative;
+  flex: 1;
   min-height: 400px;
   display: grid;
   place-items: center;
@@ -1772,6 +1764,7 @@ button {
   border-radius: var(--radius-md);
   border: 1px solid var(--border-subtle);
   padding: var(--space-xl);
+  overflow: hidden;
 }
 
 .overlayViewport img {
@@ -1791,127 +1784,6 @@ button {
   z-index: 1;
 }
 
-/* Mobile comparison styles */
-@media (max-width: 900px) {
-  .compareGrid--2,
-  .compareGrid--3,
-  .compareGrid--4 {
-    grid-template-columns: 1fr;
-  }
-  
-  .inputsGrid {
-    grid-template-columns: 1fr;
-  }
-  
-  .compareControls {
-    flex-direction: column;
-    gap: var(--space-md);
-    align-items: flex-start;
-  }
-  
-  .compareTabs {
-    width: 100%;
-  }
-  
-  .compareTab {
-    flex: 1;
-    text-align: center;
-  }
-}
-
-@media (max-width: 640px) {
-  .compareInputCard {
-    min-height: 160px;
-    padding: var(--space-sm);
-  }
-  
-  .compareDropZone {
-    min-height: 80px;
-    padding: var(--space-md);
-  }
-  
-  .compareItemViewport {
-    min-height: 150px;
-  }
-  
-  .overlayViewport {
-    min-height: 250px;
-  }
-  
-  .addSlotButton {
-    width: 100%;
-  }
-}
-
-/* Grid View - Matches component classes */
-.gridView {
-  padding: var(--space-lg);
-  min-height: 400px;
-  background: var(--bg-secondary);
-  overflow: auto;
-}
-
-.gridViewContent {
-  display: grid;
-  gap: var(--space-lg);
-  transform-origin: center top;
-  transition: transform 200ms ease;
-}
-
-.gridViewItem {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: var(--space-md);
-  min-height: 200px;
-}
-
-.gridViewItem img {
-  flex: 1;
-  width: 100%;
-  max-height: 300px;
-  object-fit: contain;
-  background: var(--bg-primary);
-  border-radius: var(--radius-sm);
-}
-
-.gridViewItemLabel {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--space-sm);
-  padding-top: var(--space-sm);
-  border-top: 1px solid var(--border-subtle);
-}
-
-.gridViewItemLabel span:first-child {
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.gridViewItemDimensions {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  color: var(--text-muted);
-  flex-shrink: 0;
-}
-
-/* Overlay Slider View */
-.overlayView {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-  padding: var(--space-lg);
-  min-height: 400px;
-}
-
 .overlaySliderControl {
   display: flex;
   align-items: center;
@@ -1924,11 +1796,11 @@ button {
 
 .overlaySliderControl input[type="range"] {
   flex: 1;
-  height: 6px;
+  height: 4px;
   -webkit-appearance: none;
   appearance: none;
   background: var(--border-default);
-  border-radius: 3px;
+  border-radius: 2px;
   cursor: pointer;
 }
 
@@ -1940,12 +1812,13 @@ button {
   background: var(--accent);
   border-radius: 50%;
   cursor: grab;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 12px var(--accent-glow);
   transition: transform var(--transition-fast);
+  border: 2px solid var(--bg-primary);
 }
 
 .overlaySliderControl input[type="range"]::-webkit-slider-thumb:hover {
-  transform: scale(1.1);
+  transform: scale(1.15);
 }
 
 .overlaySliderControl input[type="range"]::-webkit-slider-thumb:active {
@@ -1959,8 +1832,8 @@ button {
   background: var(--accent);
   border-radius: 50%;
   cursor: grab;
-  border: none;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  border: 2px solid var(--bg-primary);
+  box-shadow: 0 0 12px var(--accent-glow);
 }
 
 .overlaySliderControl span {
@@ -1969,18 +1842,6 @@ button {
   color: var(--text-secondary);
   min-width: 40px;
   text-align: right;
-}
-
-.overlayViewport {
-  position: relative;
-  flex: 1;
-  min-height: 400px;
-  display: grid;
-  place-items: center;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  overflow: hidden;
 }
 
 .overlayBase,
@@ -2007,11 +1868,12 @@ button {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 4px;
+  width: 3px;
   background: var(--accent);
   transform: translateX(-50%);
   cursor: ew-resize;
   z-index: 2;
+  box-shadow: 0 0 16px var(--accent-glow);
 }
 
 .overlaySliderHandle::before {
@@ -2024,7 +1886,8 @@ button {
   height: 32px;
   background: var(--accent);
   border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 20px var(--accent-glow);
+  border: 2px solid var(--bg-primary);
 }
 
 .overlaySliderHandle::after {
@@ -2036,7 +1899,7 @@ button {
   font-family: var(--font-mono);
   font-size: 0.625rem;
   font-weight: 700;
-  color: white;
+  color: #fff;
   pointer-events: none;
 }
 
@@ -2044,6 +1907,7 @@ button {
   position: absolute;
   bottom: var(--space-md);
   padding: var(--space-xs) var(--space-sm);
+  font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 500;
   background: var(--bg-secondary);
@@ -2070,14 +1934,86 @@ button {
   text-align: center;
 }
 
-/* Compare Toolbar & Stats */
+/* ----------------------------------------------------------
+   17. Grid View
+   ---------------------------------------------------------- */
+.gridView {
+  padding: var(--space-lg);
+  min-height: 400px;
+  background: var(--bg-secondary);
+  overflow: auto;
+}
+
+.gridViewContent {
+  display: grid;
+  gap: var(--space-lg);
+  transform-origin: center top;
+  transition: transform 200ms ease;
+}
+
+.gridViewItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  min-height: 200px;
+  transition: border-color var(--transition-fast);
+}
+
+.gridViewItem:hover {
+  border-color: var(--border-default);
+}
+
+.gridViewItem img {
+  flex: 1;
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  background: var(--bg-primary);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.gridViewItemLabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.gridViewItemLabel span:first-child {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--font-mono);
+}
+
+.gridViewItemDimensions {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* ----------------------------------------------------------
+   18. Compare Toolbar & Stats
+   ---------------------------------------------------------- */
 .compareToolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: var(--space-md) var(--space-lg);
   background: var(--bg-tertiary);
-  border-bottom: 1px solid var(--border-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
   gap: var(--space-md);
   flex-wrap: wrap;
 }
@@ -2088,11 +2024,16 @@ button {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--text-muted);
+  letter-spacing: 0.02em;
 }
 
 .compareZoomControls {
   display: flex;
-  gap: var(--space-xs);
+  gap: 2px;
+  background: var(--bg-primary);
+  padding: 2px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
 }
 
 .compareZoomControls button {
@@ -2100,20 +2041,20 @@ button {
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--text-secondary);
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 2px;
   min-width: 36px;
+  font-family: var(--font-mono);
   transition: all var(--transition-fast);
+  cursor: pointer;
 }
 
 .compareZoomControls button:hover {
   color: var(--text-primary);
-  border-color: var(--border-default);
-  background: var(--bg-elevated);
+  background: var(--bg-secondary);
 }
 
-/* Compare Inputs Container */
 .compareInputsContainer {
   display: flex;
   flex-direction: column;
@@ -2135,25 +2076,7 @@ button {
 .compareInputAction--danger:hover {
   color: var(--danger);
   border-color: var(--danger);
-  background: rgba(239, 68, 68, 0.1);
-}
-
-.compareOutput {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-}
-
-.compareEmpty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-md);
-  padding: var(--space-3xl);
-  text-align: center;
-  color: var(--text-muted);
+  background: rgba(255, 71, 87, 0.08);
 }
 
 .compareEmptyIcon {
@@ -2166,6 +2089,7 @@ button {
   font-size: 1.125rem;
   font-weight: 600;
   color: var(--text-primary);
+  font-family: var(--font-display);
 }
 
 .compareEmpty p {
@@ -2173,81 +2097,442 @@ button {
   color: var(--text-secondary);
 }
 
-/* Mobile styles for new components */
+/* ----------------------------------------------------------
+   19. Animations
+   ---------------------------------------------------------- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulseBorder {
+  0%, 100% {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0 var(--accent-subtle);
+  }
+  50% {
+    border-color: var(--accent-hover);
+    box-shadow: 0 0 24px 4px var(--accent-subtle);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 16px var(--accent-subtle);
+  }
+  50% {
+    box-shadow: 0 0 32px var(--accent-glow);
+  }
+}
+
+/* ----------------------------------------------------------
+   20. Responsive
+   ---------------------------------------------------------- */
 @media (max-width: 900px) {
+  .workbench {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .panelCard {
+    position: static;
+  }
+
+  .panelContent {
+    max-height: none;
+  }
+
+  .pageHero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .compareGrid--2,
+  .compareGrid--3,
+  .compareGrid--4 {
+    grid-template-columns: 1fr;
+  }
+
+  .inputsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .compareControls {
+    flex-direction: column;
+    gap: var(--space-md);
+    align-items: flex-start;
+  }
+
+  .compareTabs {
+    width: 100%;
+  }
+
+  .compareTab {
+    flex: 1;
+    text-align: center;
+  }
+
   .gridView {
     padding: var(--space-md);
   }
-  
+
   .gridViewContent {
     grid-template-columns: 1fr !important;
   }
-  
+
   .gridViewItem {
     min-height: 150px;
   }
-  
+
   .overlayView {
     padding: var(--space-md);
     min-height: 300px;
   }
-  
+
   .overlayViewport {
     min-height: 300px;
   }
-  
+
   .overlaySliderControl {
     padding: var(--space-sm);
   }
-  
+
   .compareToolbar {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .compareStats {
     justify-content: center;
   }
-  
+
   .compareZoomControls {
     justify-content: center;
   }
 }
 
+@media (max-width: 768px) {
+  .importGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .dropZone {
+    padding: var(--space-xl) var(--space-md);
+    min-height: 120px;
+  }
+
+  .textArea {
+    min-height: 100px;
+  }
+
+  .compareInputCard {
+    min-height: 160px;
+    padding: var(--space-sm);
+  }
+
+  .compareDropZone {
+    min-height: 80px;
+    padding: var(--space-md);
+  }
+
+  .compareItemViewport {
+    min-height: 150px;
+  }
+
+  .overlayViewport {
+    min-height: 250px;
+  }
+
+  .addSlotButton {
+    width: 100%;
+  }
+}
+
 @media (max-width: 640px) {
+  :root {
+    --space-xl: 1.5rem;
+    --space-2xl: 2rem;
+  }
+
+  .pageShell {
+    padding: var(--space-md);
+  }
+
+  .pageHero {
+    padding: var(--space-sm) 0;
+  }
+
+  .heroTitle {
+    font-size: 1.375rem;
+  }
+
+  .heroMeta {
+    font-size: 0.625rem;
+  }
+
+  .surfaceCard {
+    padding: var(--space-md);
+  }
+
+  .dropZone {
+    min-height: 100px;
+    padding: var(--space-lg) var(--space-md);
+    gap: var(--space-sm);
+  }
+
+  .dropZoneIcon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .dropZoneText {
+    font-size: 0.8125rem;
+  }
+
+  .dropZoneButton {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.75rem;
+  }
+
+  .dropZoneHint {
+    font-size: 0.625rem;
+  }
+
+  .textArea {
+    min-height: 80px;
+    font-size: 0.75rem;
+  }
+
+  .actionButton {
+    padding: var(--space-sm) var(--space-md);
+    min-height: 44px;
+    font-size: 0.875rem;
+  }
+
+  .stageHeader {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .stageHeader h3 {
+    font-size: 0.8125rem;
+  }
+
+  .stageToolbar {
+    padding: var(--space-sm);
+    gap: var(--space-sm);
+  }
+
+  .toolGroup {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .toolButton {
+    flex: 1;
+    min-height: 40px;
+    font-size: 0.8125rem;
+  }
+
+  .stageViewport {
+    min-height: 280px;
+  }
+
+  .stageImage {
+    max-width: 90vw;
+    max-height: 70vh;
+  }
+
+  .stageFooter {
+    padding: var(--space-sm) var(--space-md);
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .stageFooterItem {
+    flex: 1;
+    min-width: 80px;
+  }
+
+  .panelHeader {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .panelTab {
+    padding: var(--space-xs) var(--space-sm);
+    min-height: 36px;
+    font-size: 0.8125rem;
+  }
+
+  .panelContent {
+    padding: var(--space-md);
+  }
+
+  .metricGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  .metricCard {
+    padding: var(--space-sm);
+  }
+
+  .metricValue {
+    font-size: 1.0625rem;
+  }
+
+  .featureTag {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.75rem;
+  }
+
+  .paletteRow {
+    gap: var(--space-xs);
+  }
+
+  .paletteSwatch {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.6875rem;
+  }
+
+  .countRow {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.8125rem;
+  }
+
+  .exportBox {
+    padding: var(--space-sm);
+  }
+
+  .toast {
+    right: var(--space-md);
+    left: var(--space-md);
+    bottom: var(--space-md);
+    max-width: none;
+  }
+
+  .siteHeaderInner {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .siteBrandText {
+    display: none;
+  }
+
+  .mainNav {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .navLink {
+    flex: 1;
+    justify-content: center;
+    padding: var(--space-sm);
+  }
+
+  .navLink span {
+    display: none;
+  }
+
+  .navLink svg {
+    width: 20px;
+    height: 20px;
+  }
+
   .gridViewItem img {
     max-height: 200px;
   }
-  
+
   .gridViewItemLabel span:first-child {
     font-size: 0.75rem;
   }
-  
+
   .overlayViewport {
     min-height: 250px;
     padding: var(--space-md);
   }
-  
+
   .overlaySliderHandle::before {
     width: 28px;
     height: 28px;
   }
-  
+
   .overlayLabel {
     font-size: 0.6875rem;
     padding: var(--space-xs);
   }
-  
+
   .compareEmpty {
     padding: var(--space-2xl);
   }
-  
+
   .compareEmptyIcon {
     width: 48px;
     height: 48px;
   }
-  
+
   .compareEmpty h3 {
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .heroTitle {
+    font-size: 1.125rem;
+  }
+
+  .surfaceHeading h3 {
+    font-size: 0.75rem;
+  }
+
+  .toolButton {
+    font-size: 0.75rem;
+    padding: var(--space-xs);
+  }
+
+  .stageViewport {
+    min-height: 240px;
+  }
+}
+
+/* ----------------------------------------------------------
+   21. Reduced Motion
+   ---------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .toolButton,
+  .actionButton,
+  .panelTab,
+  .dropZone {
+    min-height: 44px;
+  }
+
+  .dropZone:active {
+    transform: scale(0.98);
   }
 }

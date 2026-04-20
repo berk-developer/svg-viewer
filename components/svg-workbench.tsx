@@ -42,8 +42,9 @@ const ENCODER = new TextEncoder();
 
 const defaultSvg = `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-  <rect width="100" height="100" fill="#6366f1"/>
-  <circle cx="50" cy="50" r="30" fill="#0a0a0a"/>
+  <rect width="100" height="100" fill="#ff6b35" opacity="0.2"/>
+  <circle cx="50" cy="50" r="30" fill="#ff6b35"/>
+  <path d="M35 50 L45 60 L65 40" stroke="#060608" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 `;
 
@@ -74,57 +75,55 @@ export function SvgWorkbench() {
   const [toast, setToast] = useState<ToastState | null>(null);
   const [isPanning, setIsPanning] = useState(false);
   const [pasteValue, setPasteValue] = useState("");
-const [isExportingPng, setIsExportingPng] = useState<number | null>(null);
+  const [isExportingPng, setIsExportingPng] = useState<number | null>(null);
 
-// Keyboard handler for viewport pan/zoom (WCAG 2.1.1 - accessibility)
-const handleViewportKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-  if (!stageViewportRef.current) return;
-  
-  const viewportRect = stageViewportRef.current.getBoundingClientRect();
-  const panAmount = Math.min(viewportRect.width, viewportRect.height) * 0.1;
-  
-  switch (event.key) {
-    case "ArrowUp": {
-      event.preventDefault();
-      setTransform((current) => ({ ...current, panY: current.panY + panAmount, fitMode: "custom" }));
-      break;
-    }
-    case "ArrowDown": {
-      event.preventDefault();
-      setTransform((current) => ({ ...current, panY: current.panY - panAmount, fitMode: "custom" }));
-      break;
-    }
-    case "ArrowLeft": {
-      event.preventDefault();
-      setTransform((current) => ({ ...current, panX: current.panX + panAmount, fitMode: "custom" }));
-      break;
-    }
-    case "ArrowRight": {
-      event.preventDefault();
-      setTransform((current) => ({ ...current, panX: current.panX - panAmount, fitMode: "custom" }));
-      break;
-    }
-    case "+":
-    case "=": {
-      event.preventDefault();
-      setTransform((current) => ({ ...current, zoom: clamp(current.zoom * 1.12, MIN_ZOOM, MAX_ZOOM), fitMode: "custom" }));
-      break;
-    }
-    case "-": {
-      event.preventDefault();
-      setTransform((current) => ({ ...current, zoom: clamp(current.zoom * 0.9, MIN_ZOOM, MAX_ZOOM), fitMode: "custom" }));
-      break;
-    }
-    case "0": {
-      event.preventDefault();
-      const fitTransform = buildFitTransform(viewportSize, contentSize);
-      if (fitTransform) setTransform(fitTransform);
-      break;
-    }
-  }
-};
+  const handleViewportKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (!stageViewportRef.current) return;
+    const viewportRect = stageViewportRef.current.getBoundingClientRect();
+    const panAmount = Math.min(viewportRect.width, viewportRect.height) * 0.1;
 
-const markupSource = analysis?.prettySource || currentInput.originalText;
+    switch (event.key) {
+      case "ArrowUp": {
+        event.preventDefault();
+        setTransform((current) => ({ ...current, panY: current.panY + panAmount, fitMode: "custom" }));
+        break;
+      }
+      case "ArrowDown": {
+        event.preventDefault();
+        setTransform((current) => ({ ...current, panY: current.panY - panAmount, fitMode: "custom" }));
+        break;
+      }
+      case "ArrowLeft": {
+        event.preventDefault();
+        setTransform((current) => ({ ...current, panX: current.panX + panAmount, fitMode: "custom" }));
+        break;
+      }
+      case "ArrowRight": {
+        event.preventDefault();
+        setTransform((current) => ({ ...current, panX: current.panX - panAmount, fitMode: "custom" }));
+        break;
+      }
+      case "+":
+      case "=": {
+        event.preventDefault();
+        setTransform((current) => ({ ...current, zoom: clamp(current.zoom * 1.12, MIN_ZOOM, MAX_ZOOM), fitMode: "custom" }));
+        break;
+      }
+      case "-": {
+        event.preventDefault();
+        setTransform((current) => ({ ...current, zoom: clamp(current.zoom * 0.9, MIN_ZOOM, MAX_ZOOM), fitMode: "custom" }));
+        break;
+      }
+      case "0": {
+        event.preventDefault();
+        const fitTransform = buildFitTransform(viewportSize, contentSize);
+        if (fitTransform) setTransform(fitTransform);
+        break;
+      }
+    }
+  };
+
+  const markupSource = analysis?.prettySource || currentInput.originalText;
   const deferredMarkupSource = useDeferredValue(markupSource);
   const exportState = getExportState(currentInput, analysis);
   const contentSize = getRenderableSize(analysis, imageSize);
@@ -387,9 +386,7 @@ const markupSource = analysis?.prettySource || currentInput.originalText;
         <div className="stageCard">
           <div className="stageHeader">
             <h3>{currentInput.name ?? "Untitled"}</h3>
-            <div className="stageMeta">
-              <span className="chip">{formatBytes(currentInput.byteSize)}</span>
-            </div>
+            <span className="chip">{formatBytes(currentInput.byteSize)}</span>
           </div>
 
           <div className="stageToolbar">
@@ -444,6 +441,7 @@ const markupSource = analysis?.prettySource || currentInput.originalText;
             {previewStatus !== "ready" && (
               <div className="stageOverlay">
                 <div className="stageOverlayLabel">{analysisState === "parsing" ? "Processing..." : "Error"}</div>
+                <div className="stageOverlayCopy">{analysisState === "error" ? "Failed to parse SVG" : "Analyzing markup"}</div>
               </div>
             )}
           </div>
@@ -483,7 +481,7 @@ const markupSource = analysis?.prettySource || currentInput.originalText;
           <div className="panelContent">
             <div className="metricGrid">
               <div className="metricCard"><div className="metricLabel">Canvas</div><div className="metricValue">{formatCanvasLabel(analysis)}</div></div>
-              <div className="metricCard"><div className="metricLabel">Elements</div><div className="metricValue">{analysis ? analysis.approxNodeCount.toLocaleString() : "−"}</div></div>
+              <div className="metricCard"><div className="metricLabel">Elements</div><div className="metricValue">{analysis ? analysis.approxNodeCount.toLocaleString() : "—"}</div></div>
             </div>
 
             <div className="infoSection">
@@ -499,7 +497,7 @@ const markupSource = analysis?.prettySource || currentInput.originalText;
 
             {sortedElementCounts.length > 0 && (
               <div className="infoSection">
-                <div className="infoSectionHeading"><h4>Elements</h4></div>
+                <div className="infoSectionHeading"><h4>Elements</h4><span>Top {Math.min(sortedElementCounts.length, 8)}</span></div>
                 <div className="countList">
                   {sortedElementCounts.slice(0, 8).map(([name, count]) => (
                     <div className="countRow" key={name}><span>{name}</span><strong>{count}</strong></div>
@@ -510,7 +508,7 @@ const markupSource = analysis?.prettySource || currentInput.originalText;
 
             {analysis && analysis.colorPalette.length > 0 && (
               <div className="infoSection">
-                <div className="infoSectionHeading"><h4>Colors</h4></div>
+                <div className="infoSectionHeading"><h4>Colors</h4><span>{analysis.colorPalette.length}</span></div>
                 <div className="paletteRow">
                   {analysis.colorPalette.map((color) => (
                     <div className="paletteSwatch" key={color}><span className="paletteChip" style={{ background: color }} /><span>{color}</span></div>
@@ -521,7 +519,7 @@ const markupSource = analysis?.prettySource || currentInput.originalText;
 
             {featureWarnings.length > 0 && (
               <div className="infoSection">
-                <div className="infoSectionHeading"><h4>Warnings</h4></div>
+                <div className="infoSectionHeading"><h4>Warnings</h4><span>{featureWarnings.length}</span></div>
                 <div className="warningList">
                   {featureWarnings.map((warning) => (<WarningRow key={`${warning.code}-${warning.message}`} warning={warning} />))}
                 </div>
@@ -531,8 +529,8 @@ const markupSource = analysis?.prettySource || currentInput.originalText;
         )}
 
         {panelTab === "markup" && (
-          <div className="panelContent panelContent--markup">
-            <div className="panelActions">
+          <div className="panelContent">
+            <div className="panelActions" style={{ marginBottom: 'var(--space-md)' }}>
               <button className="actionButton" type="button" onClick={() => handleCopy(markupSource, "Copied")}>Copy</button>
             </div>
             <pre className="markupPane">{deferredMarkupSource}</pre>
@@ -543,6 +541,7 @@ const markupSource = analysis?.prettySource || currentInput.originalText;
           <div className="panelContent">
             <div className="exportBox">
               <h4>SVG</h4>
+              <p className="inlineFeedback" style={{ marginBottom: 'var(--space-md)' }}>Download or copy the source</p>
               <div className="panelActions">
                 <button className="actionButton actionButton--primary" type="button" onClick={handleDownloadSvg}>Download</button>
                 <button className="actionButton" type="button" onClick={() => handleCopy(markupSource, "Copied")}>Copy</button>
@@ -550,6 +549,7 @@ const markupSource = analysis?.prettySource || currentInput.originalText;
             </div>
             <div className="exportBox">
               <h4>PNG</h4>
+              <p className="inlineFeedback" style={{ marginBottom: 'var(--space-md)' }}>Rasterize at scale</p>
               <div className="panelActions">
                 {[1, 2, 4].map((scale) => (
                   <button
@@ -563,7 +563,7 @@ const markupSource = analysis?.prettySource || currentInput.originalText;
                   </button>
                 ))}
               </div>
-              {!exportState.canExportPng && <p className="inlineFeedback">{exportState.blockedReason}</p>}
+              {!exportState.canExportPng && <p className="inlineFeedback" style={{ marginTop: 'var(--space-sm)' }}>{exportState.blockedReason}</p>}
             </div>
           </div>
         )}
@@ -582,7 +582,7 @@ function WarningRow({ warning }: { warning: SvgWarning }) {
   return (
     <div className={`warningRow warningRow--${warning.level}`}>
       <div className="warningRowHead"><span className="warningBadge">{warning.level}</span><strong>{warning.message}</strong></div>
-      {warning.details && <p className="warningDetails">{warning.details}</p>}
+      {warning.details && <p style={{ marginTop: 4, fontSize: '0.75rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>{warning.details}</p>}
     </div>
   );
 }
@@ -654,10 +654,10 @@ function formatBytes(byteSize: number): string {
 }
 
 function formatCanvasLabel(summary: ParsedSvgSummary | null): string {
-  if (!summary) return "−";
+  if (!summary) return "—";
   if (summary.widthText && summary.heightText) return `${summary.widthText} × ${summary.heightText}`;
   if (summary.viewBox) return `${summary.viewBox.width} × ${summary.viewBox.height}`;
-  return "−";
+  return "—";
 }
 
 async function exportSvgAsPng(svgText: string, scale: number, fileName: string | undefined, sizeHint: StageSize) {

@@ -352,7 +352,7 @@ function CompareInput({
           </label>
           <div className="compareInputOr">or paste</div>
           <textarea
-            className="compareInputTextarea"
+            className="textArea compareInputTextarea"
             value={pasteValue}
             onChange={(e) => setPasteValue(e.target.value)}
             placeholder="\u003csvg...\u003e"
